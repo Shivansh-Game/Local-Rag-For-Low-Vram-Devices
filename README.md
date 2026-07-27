@@ -1,4 +1,4 @@
-# ⚡ Multimodal Local RAG (Sub-3GB VRAM)
+# Multimodal Local RAG (Sub-3GB VRAM)
 
 > **Private, offline, and lightweight Multimodal Document AI running entirely on consumer GPUs.** 
 
@@ -6,21 +6,21 @@ An end-to-end local Retrieval-Augmented Generation (RAG) system built with **Str
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-* **📦 Extreme Efficiency (<3GB VRAM Target):** Uses 4-bit NF4 quantization (`bitsandbytes`), `bfloat16` precision, dynamic context window management, and strict token budget calculations to run on budget/entry-level GPUs.
-* **👁️ Truly Multimodal Retrieval & Generation:** Extracts visual elements (tables, diagrams, figures) directly from PDFs. The vision-language model (`Qwen3.5-2B`) analyzes both context chunks and image artifacts side-by-side.
-* **🔎 Advanced Hybrid Retrieval (ColBERT + Dense):** Integrates **Qdrant** with dual-vector indexing (`bge-small-en-v1.5` dense embeddings + `colbertv2.0` late-interaction multi-vectors) or **ChromaDB** with cross-encoder reranking (`bge-reranker-v2-m3`).
-* **🚀 Blazing-Fast PDF Ingestion:** Uses a multi-threaded hybrid PDF parser (PyMuPDF/Fitz + Tesseract OCR fallback) or structured document conversion via `Docling` for deep hierarchical chunking.
-* **🧠 Context-Aware Query Reformulation:** Automatically resolves pronouns ("it", "this", "he") and expands search queries using conversation history to maximize retrieval recall.
-* **💬 Streaming Chat Interface with Strict Citations:** Includes full chat history, expandable source citations, visual image artifacts in chat history, and streamed model outputs using `TextIteratorStreamer`.
+* ** Extreme Efficiency (<3GB VRAM Target):** Uses 4-bit NF4 quantization (`bitsandbytes`), `bfloat16` precision, dynamic context window management, and strict token budget calculations to run on budget/entry-level GPUs.
+* ** Truly Multimodal Retrieval & Generation:** Extracts visual elements (tables, diagrams, figures) directly from PDFs. The vision-language model (`Qwen3.5-2B`) analyzes both context chunks and image artifacts side-by-side.
+* ** Advanced Hybrid Retrieval (ColBERT + Dense):** Integrates **Qdrant** with dual-vector indexing (`bge-small-en-v1.5` dense embeddings + `colbertv2.0` late-interaction multi-vectors)
+* ** Blazing-Fast PDF Ingestion:** Uses a multi-threaded hybrid PDF parser (PyMuPDF/Fitz + Tesseract OCR fallback) or 
+* ** Context-Aware Query Reformulation:** Automatically resolves pronouns ("it", "this", "he") and expands search queries using conversation history to maximize retrieval recall.
+* ** Streaming Chat Interface with Strict Citations:** Includes full chat history, expandable source citations, visual image artifacts in chat history, and streamed model outputs using `TextIteratorStreamer`.
 
 ---
 
-## 🛠️ Architecture & VRAM Engineering
+##  Architecture & VRAM Engineering
 
 ```text
-  [PDF Upload] ──> [Docling / PyMuPDF Parser] ──> Extract Text & Images
+  [PDF Upload] ──> [PyMuPDF Parser] ──> Extract Text & Images
                                                         │
                                                         ▼
 [Query Input] ──> [Context Reformulation] ──> [Hybrid Vector DB Search]
@@ -38,7 +38,7 @@ An end-to-end local Retrieval-Augmented Generation (RAG) system built with **Str
 
 ---
 
-## 📋 Prerequisites
+##  Prerequisites
 
 * **OS:** Windows, Linux, or macOS (Apple Silicon)
 * **Python:** 3.10+
@@ -47,7 +47,7 @@ An end-to-end local Retrieval-Augmented Generation (RAG) system built with **Str
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### 1. Clone the Repository
 ```bash
@@ -73,11 +73,10 @@ streamlit run app.py
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```text
-├── app.py               # Main Streamlit UI, RAG logic, and retrieval pipeline
-├── colberttest.py       # Alternative Qdrant + ColBERT v2 hybrid search pipeline
+├── app.py       
 ├── helper.py            # Vision token estimation math (Qwen-VL patch grid math)
 ├── requirements.txt     # Python dependencies
 ├── local_rag_db/        # Persistent local vector database (ChromaDB / Qdrant)
@@ -86,7 +85,7 @@ streamlit run app.py
 
 ---
 
-## 📜 Dependencies (`requirements.txt`)
+##  Dependencies (`requirements.txt`)
 
 ```text
 transformers>=4.39.0
@@ -95,19 +94,16 @@ accelerate>=0.28.0
 sentence-transformers>=2.5.0
 faiss-cpu>=1.8.0
 chromadb
-qdrant-client
-fastembed
 docling
 streamlit
-PyMuPDF
-pytesseract
-Pillow
-langchain-text-splitters
+accelerate
+# pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
+# install this too btw
 ```
 
 ---
 
-## ⚙️ Configuration & Model Customization
+##  Configuration & Model Customization
 
 * **LLM Engine:** Default is set to `Qwen/Qwen3.5-2B` (`AutoModelForImageTextToText`).
 * **Dense Embeddings:** Default is set to `BAAI/bge-small-en-v1.5` or `mixedbread-ai/mxbai-embed-large-v1`.
@@ -116,6 +112,6 @@ langchain-text-splitters
 
 ---
 
-## 🛡️ License
+##  License
 
 Distributed under the MIT License. See `LICENSE` for more information.
