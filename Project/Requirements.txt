@@ -1,0 +1,14 @@
+transformers>=4.39.0
+bitsandbytes>=0.46.1
+accelerate>=0.28.0
+sentence-transformers>=2.5.0
+faiss-cpu>=1.8.0
+chromadb
+qdrant-client
+fastembed
+docling
+streamlit
+PyMuPDF
+pytesseract
+Pillow
+langchain-text-splitters
