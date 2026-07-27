@@ -4,11 +4,8 @@ accelerate>=0.28.0
 sentence-transformers>=2.5.0
 faiss-cpu>=1.8.0
 chromadb
-qdrant-client
-fastembed
 docling
 streamlit
-PyMuPDF
-pytesseract
-Pillow
-langchain-text-splitters
+accelerate
+# pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
+# install this too btw
